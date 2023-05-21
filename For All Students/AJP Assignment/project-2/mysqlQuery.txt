@@ -1,0 +1,221 @@
+
+ Database operations
+.
+..
+
+.
+A) Create Database
+create database database_name;
+
+B) Delete Database 
+drop database database_name;
+
+.
+.
+.
+.
+.
+ TABLE OPERATIONS
+.
+.
+.
+.
+C) Create Table
+Create table table_name(
+	column1 datatype,
+	column2 datatype,
+	..
+	.
+	columnN datatype
+);
+
+D) Crete table from another table
+Create table new_table_name as 
+	select column1, column2, .. from existing_table where condition;
+
+E) Drop table or delete table
+Drop table table_name
+
+F) Add column in table
+ALTER TABLE table_name
+ADD column_name datatype;
+
+G) Delete column in table
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+H) Modify column in table 
+ALTER TABLE table_name
+MODIFY COLUMN column_name datatype;
+.
+.
+.
+(Note : Add constrain in table, SQL constraints are used to specify rules for the data in a table.
+		Constraints are used to limit the type of data that can go into a table
+	NOT NULL - Ensures that a column cannot have a NULL value
+	UNIQUE - Ensures that all values in a column are different
+	PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+	FOREIGN KEY - Prevents actions that would destroy links between tables
+	CHECK - Ensures that the values in a column satisfies a specific condition
+	DEFAULT - Sets a default value for a column if no value is specified
+	CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+crete table with constrain)
+
+I) Create table with constrain
+Create table table_name(
+	column1 datatype1 NOT NULL AUTO_INCREMENT),
+	UNIQUE(column1),
+	PRIMARY KEY(column1),
+	column2 datatype,
+	FOREIGN KEY column2 REFERENCES another_table(column2),
+	column3 datatype,
+	CHECK (condition),
+	column4 datatype DEFAULT 'value',
+)
+
+J) Create index for specific column in table
+Create UNIQUE INDEX index_name ON table_name(column1, column2, ..);
+
+
+.
+
+..
+
+..
+.
+.
+.
+.
+
+1) retrive all records in table
+select * from table_name;
+
+2) retrive specific columns
+select column1,column2, ... from table_name;
+
+3) retrive only defferent values from columns in table
+select distinct column1, column2, .... from table_name;
+
+4) count distict value from column
+select count(distict column_name) from table_name;
+
+5) retrive records with some conditions
+select * from table_name where conditions;
+
+6) retrive specific value in column
+select * from table_name where column = "value1";
+
+(you can use below operator instead of "=") >= , <= , < , > , != , BETWEEN , LIKE , IN
+
+
+7) and operation (all conditions must be true)
+select * from table_name where condition1 and condition2 and condition3;
+
+8) OR operation (any condition of given conditions are true) 
+select * from table_name where condition1 or condition2 or condition3;
+
+9) NOT operation (given condition not true) 
+select * from table_name where not condition1;
+
+10) Mix And & OR 
+select * from table_name where condition1 and (condition2 or condition3);
+
+11) Mix AND , OR and NOT
+select * from table_name where condition1 or (condition2 and NOT condition3);
+
+12) show records in ascending order
+select * from table_name where order by column1;
+
+13) show records in decending order
+select * from table_name where order by column1 desc;
+
+14) order by more than one columns
+select * from table_name where order by column1 asc, column2 desc;
+
+15) retrive null values in table
+select * from table_name where column1 IS NULL;
+
+16) retrive not null values
+select * from table_name where column1 IS NOT NULL;
+
+.
+.
+.
+.
+.
+
+Insert values
+...
+.
+.
+.
+
+
+
+
+17) insert values in table
+insert into table_name (column1, column2, ...) where values(value1, value2, ...);
+OR
+ If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query.
+insert into table_name values(value1, value2, ...);
+
+18) insert data in specific column (not all)
+insert into table_name(column1, column2, column3) where values(value1, value2, value3);
+
+
+.
+.
+.
+.
+..
+.
+UPDATE RECORDS
+.
+.
+.
+.
+..
+.
+
+19) Update records in specific columns
+UPDATE table_name set column1='value1' , column2='value2' , ...., columnN= 'valueN' where condition;
+
+(!!WARNING : if you omit where cluse it will update all records)
+
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+  DELETE RECORDS 
+.
+.
+.
+.
+
+20) delete records in table
+DELETE from table_name where condition;
+
+21) delete all records
+DELETE from table_name
+
+.
+.
+.
+
+.
+.
+.
+ LIMIT RECORDS (show only specified number of records)
+.
+.
+.
+
+22) show only specified number of records
+select column_names from table_name where conditions LIMIT number; 
